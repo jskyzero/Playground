@@ -1,0 +1,49 @@
+<project name="Hello">
+
+<path id="classpath">
+	<pathelement location="junit-4.9.jar" />
+</path>
+
+	<target name="compile">
+		<javac srcdir="." destdir="." includeantruntime="false"/>
+		<classpath refid="classpath"/>
+	</target>
+
+	<target name="test-compile" depends="compile">
+		<javac srcdir="." destdir="." includeantruntime="false">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="test" depends="test-compile">
+		<junit printsummary="on" haltonfailure="yes" fork="true">
+			<classpath>
+				<path refid="classpath"/>
+				<pathelement location="." />
+			</classpath>
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="." includes="."/>
+			</batchtest>	
+		</junit>
+	</target>
+
+	<target name="jar">
+       
+        <jar destfile="${ant.project.name}.text.jar" basedir=".">
+            <manifest>
+                <attribute name="Main-Class" value="HelloWorldTest"/>
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="run" description="run app" depends="test-compile, jar">
+        <java jar="${ant.project.name}.text.jar" fork="true">
+        	<arg value="-ea org.junit.runner.JUnitCore"/>
+        	<classpath>
+				<path refid="classpath"/>
+				<pathelement location="." />
+			</classpath>
+        </java>
+    </target>
+</project>

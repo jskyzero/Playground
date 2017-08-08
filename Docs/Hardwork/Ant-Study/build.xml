@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Ok, Now I learn To use xml and ant -->
+<!--project
+    name    : name
+    default : default run target (must)
+    basedir : default is local dir-->
+<project name="Hello World Projeanct" default="info">
+    <property file="build.properties"/>
+    <!--target
+        name    : name (must)
+        depends : use ',' between many depends
+        description : like name
+        if      : if not exits, Not Run
+        unless  : if not exits, Run-->
+    <target name="info">
+        <echo>Hello World - Welcome to Apache Ant! ${src.dir}</echo>
+    </target>
+
+    <target name="javac" description="compile app">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="${build.dir}"/>
+        <jar destfile="${build.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="run" description="run app" depends="javac, jar">
+        <java jar="${build.dir}/${ant.project.name}.jar" fork="true"/>
+    </target>
+
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+</project>
