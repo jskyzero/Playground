@@ -6,6 +6,13 @@
 
 ## hardwork
 
+
 ## reference
+
 [R-Project](https://www.r-project.org/)
+
 [The R Manuals](https://cran.r-project.org/manuals.html)
+
+[Learn R, in R](http://swirlstats.com/)
+
+[R语言教程](http://www.yiibai.com/r/r_overview.html)
