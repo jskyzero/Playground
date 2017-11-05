@@ -1,21 +1,20 @@
 using Gtk;
 
-public class MyApp: Gtk.Application {
+public class Timer{
   private Window window;
-  private uint timerID;
+  private Builder builder;
+  private bool canUpdate;
+  private int64 initialSec;
 
-  public MyApp () throws Error {
-    //  var builder = new Builder ();
-    //  builder.add_from_file ("gui.xml");
-    //  builder.set_application(this);
-    //  var builder = new Builder ();
-    //  builder.add_from_file ("gui.xml");
-    //  builder.connect_signals (this);
-    //  this.window = builder.get_object ("win_main") as Window;
-    window = new Gtk.ApplicationWindow (this);
-    window.set_default_size (400, 400);
-		window.title = "My Gtk.Application";
+  public Timer () throws Error {
+    canUpdate = false;
+    builder = new Builder ();
+    builder.add_from_file ("UI.glade");
+    builder.connect_signals (this);
+    this.window = builder.get_object ("window") as Window;
     this.window.destroy.connect(Gtk.main_quit);
+
+    var thread = new Thread<void*>.try("test", updateTimer);
   }
 
   public void run () {
@@ -23,29 +22,33 @@ public class MyApp: Gtk.Application {
     Gtk.main ();
   }
 
-  //  //This should activate the timer.
-  //  [CCode (instance_pos = -1)]
-  //  public void on_btnActivate_clicked (Button source) {
-  //    timerID = Timeout.add (1000, on_timer_event);
-  //  }
+  [CCode (instance_pos = -1)]
+  public void button_click(Button source) {
+    canUpdate = !canUpdate;
+    source.label = canUpdate ? "click to stop" : "click to start";
+    initialSec = (new GLib.DateTime.now_local()).to_unix();
+  }
 
-  //  //This should deactivate the timer..
-  //  [CCode (instance_pos = -1)]
-  //  public void on_btnDeactivate_clicked (Button source) {
-  //    Source.remove (timerID);
-  //  }
+  private void* updateTimer() {
+    while (true) {
+      if (canUpdate) {
+        var label = builder.get_object ("timer") as Label;
+        var now = new GLib.DateTime.now_local();
+        var sec = now.to_unix();
+        var msec = now.get_microsecond ();
+        label.label = (sec - initialSec).to_string() + "." + msec.to_string();
+      }
+      Thread.usleep(1* 1000 * 1000);
+    }
+    return null;
+  }
 
-  //  //Timer listener
-  //  public bool on_timer_event () {
-  //    stdout.printf ("timer event");
-  //    return true;
-  //  }
 }
 
 int main (string[] args) {
   Gtk.init (ref args);
   try {
-    var app = new MyApp ();
+    var app = new Timer ();
     app.run ();
   } catch (Error e) {
     stderr.printf ("Could not load UI: %s\n", e.message);

@@ -1,5 +1,5 @@
 CC = valac
-Flags = --pkg gtk+-3.0
+Flags = --pkg gtk+-3.0 --pkg gmodule-2.0
 
 install: timer
 
