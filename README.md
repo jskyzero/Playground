@@ -16,7 +16,11 @@
 ├── hardwork
 │   ├── hardway         // practice code
 │   └── helloworld      // fisrt code to java
+├── projects
+│   └── todolist        // A simple todolist
 └── README.md
 ```
 
 ## Reference
+
++ [Java Tutorials Learning Paths](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
