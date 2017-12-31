@@ -14,9 +14,14 @@
 .
 ├── docs                // documents
 ├── hardwork
+│   ├── ant             // use ant to build code
 │   ├── hardway         // practice code
-│   └── helloworld      // fisrt code to java
+│   ├── helloworld      // fisrt code to java
+│   ├── junit           // junit unit test
+│   ├── swing           // swing gui
+│   └── tips            // some useful tips
 ├── projects
+│   ├── gridworld       // A grid world let you play with
 │   └── todolist        // A simple todolist
 └── README.md
 ```
