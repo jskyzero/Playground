@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Ok, Now I learn To use xml and ant -->
+<!--project
+    name    : name
+    default : default run target (must)
+    basedir : default is local dir-->
+<project name="HelloWorld" default="info">
+    <property file="build.properties"/>
+
+    <path id="classpath">
+        <pathelement location="${lib.dir}/junit-4.9.jar" />
+    </path>
+    <!--target
+        name    : name (must)
+        depends : use ',' between many depends
+        description : like name
+        if      : if not exits, Not Run
+        unless  : if not exits, Run-->
+    <target name="info">
+        <echo>Hello World - Welcome to Apache Ant! ${src.dir}</echo>
+    </target>
+
+    <target name="javac" description="compile app">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="${build.dir}"/>
+        <jar destfile="${build.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="run" description="run app" depends="javac, jar">
+        <java jar="${build.dir}/${ant.project.name}.jar" fork="true"/>
+    </target>
+
+    <target name="test-compile" description="compile tests" depends="javac, jar">
+        <mkdir dir="${tests.dir}"/>
+        <javac srcdir="${test.dir}" destdir="${tests.dir}" includeantruntime="false">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${classes.dir}" />
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="test-compile">
+        <junit printsummary="on" haltonfailure="yes" fork="true">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${tests.dir}" />
+                <pathelement location="${build.dir}" />
+            </classpath>
+            <formatter type="brief" usefile="false" />
+            <batchtest>
+                <fileset dir="test" includes="*.java"/>
+            </batchtest>    
+        </junit>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+</project>
