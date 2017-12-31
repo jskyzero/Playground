@@ -29,7 +29,6 @@
 	</target>
 
 	<target name="jar">
-       
         <jar destfile="${ant.project.name}.text.jar" basedir=".">
             <manifest>
                 <attribute name="Main-Class" value="HelloWorldTest"/>
