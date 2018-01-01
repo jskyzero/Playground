@@ -26,6 +26,19 @@
 └── README.md
 ```
 
+## Naming Style
+
++ Common rules : only ASCII letters and digits, can matched by the regular expression `\w+ `. special prefixes or suffixes, like those seen in the examples `name_`, `mName`, `s_name` and `kName`, are **not** used.
+
+
++ Package names : `com.example.deepspace`, not `com.example.deepSpace` or `com.example.deep_space`.
++ Class names : UpperCamelCase. `Character` or `ImmutableList`.
++ Constant names :  `CONSTANT_CASE`
++ Method names, Non-constant field names, Parameter names, Local variable names : lowerCamelCase.
++ Type variable names : A single capital letter, optionally followed by a single numeral (such as `E`, `T`, `X`, `T2`, examples: `RequestT`, `FooBarT`)
+
 ## Reference
 
 + [Java Tutorials Learning Paths](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
+
++ [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html#s5-naming)
