@@ -1,18 +1,28 @@
 # R-Study
-`2017/09/03` `jskyzero`
+`jskyzero` `2017/09/03`
 
-##  begin
-> R is a free software environment for statistical computing and graphics.
+## Overview
++ R is a free software environment for statistical computing and graphics.
++ ...
 
-## hardwork
+## Install & Run
++ download R from R language official site.
++ run in each indivial folder.
 
-
+## Strtucture
+```
+.
+├── docs
+├── harwork
+│   ├── hardway             // hardway
+│   ├── helloworld          // helloworld
+│   └── packages            // package usage
+├── projects
+│   └── Github_Analyzer     // todo
+└── README.md
+```
 ## reference
 
-[R-Project](https://www.r-project.org/)
-
-[The R Manuals](https://cran.r-project.org/manuals.html)
-
-[Learn R, in R](http://swirlstats.com/)
-
-[R语言教程](http://www.yiibai.com/r/r_overview.html)
++ [R-Project](https://www.r-project.org/)
++ [The R Manuals](https://cran.r-project.org/manuals.html)
++ [Learn R, in R](http://swirlstats.com/)
