@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class fileProcess {
+public class FileProcess {
     public static void main(String []args) throws IOException {
         Path filePath = Paths.get("README.md");
         List<String> lines = Files.readAllLines(filePath);
