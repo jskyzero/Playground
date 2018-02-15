@@ -2,6 +2,7 @@
  * 1. double printf use '%f'
  * 2. boolean printf use '%b'
  */
+
 class Q1 {
   public static void main(String[] argv) {
     int a = (0 + 15) / 2;
