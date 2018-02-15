@@ -4,10 +4,10 @@ import java.util.function.Supplier;
 
 class Q6 {
   public static void changeDefultOutStream(ByteArrayOutputStream baos, PrintStream oldPS) {
-        // Create a stream to hold the output
-        PrintStream newPS = new PrintStream(baos);
-        // Tell Java to use your special stream
-        System.setOut(newPS);
+    // Create a stream to hold the output
+    PrintStream newPS = new PrintStream(baos);
+    // Tell Java to use your special stream
+    System.setOut(newPS);
   }
 
   public static void assertResultEqual(ByteArrayOutputStream baos, String result) {
@@ -19,19 +19,28 @@ class Q6 {
     System.setOut(oldPS);
   }
 
-  public static void testCodes(Supplier<Integer> func) {
+  public static void testCodes(Supplier<Integer> func, String result) {
+    // IMPORTANT: Save the old System.out!
+    PrintStream oldPS = System.out;
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    PrintStream oldPS = System.out; // IMPORTANT: Save the old System.out!
     changeDefultOutStream(baos, oldPS);
     func.get();
     changeBackDefaultOutStream(oldPS);
-    assertResultEqual(baos, "123");
+    assertResultEqual(baos, result);
   }
 
   public static void main(String[] argv) {
     testCodes(() -> {
-      System.out.print("123");
-      return 1;
-    });
+      int f = 0;
+      int g = 1;
+      for (int i = 0; i <= 8; i++) {
+        System.out.print(f);
+        f = f + g;
+        g = f - g;
+      }
+      return 0;
+    }, "01123581321");
+    // f: 0 1 1 2 3 5 8 13 21 
+    // g: 1 0 1 1 2 3 5 8  13
   }
 }
