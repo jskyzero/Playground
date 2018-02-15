@@ -12,5 +12,15 @@
 
 ## Structure
 
-## Reference
+```
+.
+├── chapter1 // 基础
+├── chapter2 // 排序
+├── chapter3 // 查找
+├── chapter4 // 图
+├── chapter5 // 字符串
+├── chapter6 // 背景
+└── README.md
+```
 
+## Reference
