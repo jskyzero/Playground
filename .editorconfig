@@ -9,3 +9,10 @@ indent_style = space
 indent_size = 2
 end_of_line = lf
 charset = utf-8
+
+# seems no need to be different to defalut
+[*.java]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8

@@ -1,9 +1,11 @@
 # Documents
 docs/*.pdf
 
+# Output
 out
 *.class
 target
+
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
