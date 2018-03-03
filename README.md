@@ -37,6 +37,13 @@
 + Method names, Non-constant field names, Parameter names, Local variable names : lowerCamelCase.
 + Type variable names : A single capital letter, optionally followed by a single numeral (such as `E`, `T`, `X`, `T2`, examples: `RequestT`, `FooBarT`)
 
+
+## Todo
+
+1. project/algorithm
+2. mvn single file test system
+3. grid world upgrade 
+
 ## Reference
 
 + [Java Tutorials Learning Paths](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
