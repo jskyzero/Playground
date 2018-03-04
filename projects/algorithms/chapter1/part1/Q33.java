@@ -16,8 +16,6 @@ public class Q33 {
     Q33Matrix.print(Q33Matrix.mult(A, a));
     System.out.printf("a * A = \n");
     Q33Matrix.print(Q33Matrix.mult(a, A));
-    
-    
 
   }
 }
