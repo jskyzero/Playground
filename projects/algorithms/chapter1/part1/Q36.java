@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
       double[] array = IntStream.range(0, m).mapToDouble(x -> (double)x).toArray();
       shuffle(array);
       IntStream.range(0, m).forEach(x -> {
+        // may i, j ralation not same to book description
         table[x][(int)array[x]] += 1;
       });
     }
