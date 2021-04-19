@@ -4,7 +4,7 @@
 A universal programming playground, each language will have own branch.
 
 
-+ [CSharp](https://github.com/oYOvOYo/Playground/tree/Csharp)
+
 + [Shell](https://github.com/oYOvOYo/Shell.Playground)
 + [Java](https://github.com/oYOvOYo/Playground/tree/Java)
 + [R](https://github.com/oYOvOYo/Playground/tree/R)
